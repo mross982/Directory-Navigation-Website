@@ -1,0 +1,35 @@
+<nav class="navbar navbar-light bg-faded">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+  &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+
+    <a class="navbar-brand" href="{{url_for('index')}}">CEE</a>
+    <a class="navbar-brand" href="{{url_for('dsrip')}}">DSRIP</a>
+
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('michael')}}">Michael<span class="sr-oaly"></span></a>
+      </li>
+        <!-- <li class="nav-item">
+        {# The # before validation here jumps to where the div validation is on the web page. If the page were very long, it would auto scroll down with the first portion of validation at the top of the page. #}
+          <a class="nav-link" href="#validation">Validation</a>
+        </li> -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('kevinw')}}">Kevin W<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('lydia')}}">Lydia<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('tbd')}}">TBD<span class="sr-only">(current)</span></a>
+      </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Inactive</a>
+        </li> -->
+
+    </ul>
+  </div>
+</nav>

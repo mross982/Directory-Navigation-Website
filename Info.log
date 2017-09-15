@@ -1,0 +1,9 @@
+INFO:03/09/2017 08:31:23 AM:****************  Program Start  ******************
+INFO:03/09/2017 08:31:23 AM:File selected = G:\SCC-CPED\Appointment_Text\AppointmentReminder2.0\Centricity_Reports\DLEXSCA_20170309.xls
+INFO:03/09/2017 08:31:23 AM:File identified for Outreach Screenings
+INFO:03/09/2017 08:31:23 AM:Site for the screening on 2017-03-11 is LOST PINES TOYOTA 806 TEXAS 71 W, BASTROP, TX 78602
+INFO:03/09/2017 08:31:23 AM:Records were successfully assembled
+INFO:03/09/2017 08:31:23 AM:Records were successfully logged in Reminders_Log.xlsx
+INFO:03/09/2017 08:31:28 AM:Records were successfully imported to Redcap
+INFO:03/09/2017 08:31:28 AM:There were 21 appointment reminders sent out today
+INFO:03/09/2017 08:31:28 AM:Program Ends

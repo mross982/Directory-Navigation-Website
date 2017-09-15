@@ -1,0 +1,69 @@
+{% extends "layout.html "%}
+
+{% block body %}
+
+
+<div class="container">
+<h2>Links McClickyface</h2>
+
+<div class="card">
+<h4 class="card-title">Resources</h4>
+        <ul>
+          <li><a class="card-link" href="https://eod1.eclipseppm.com/login.aspx?ReturnUrl=%2f">Eclipse Project Management</a><br></li>
+          <li><a class="card-link" href="https://texasrhp7.perflogic.com/login/">Performance Logic</a><br></li>
+          <li><a class="card-link" href="https://app.smartsheet.com/b/home?mt=69&de=hvSmdTlFOpYO96NYo5dE_0lZ6rksEuY2ildF65a3mOc">Smart Sheet</a><br></li>
+          <li><a class="card-link" href="https://redcap.seton.org/redcap/">REDCap</a><br></li>
+        </ul>
+</div>
+
+<div class="card" id="commonlinks">
+        <h4 class="card-title">Common Directories</h4>
+        <ul>
+        {% for key, item in kevinlinks.items() %}
+        <li><a class="card-link" href="{{item}}">{{key}}</a><br></li>
+        {% endfor%}
+        <ul>
+</div>
+
+<div class="card" id="validation">
+        <h4 class="card-title">Analytics Deliverables</h4>
+        <ul>
+        <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Adult_Diabetes\Analytics_Deliverables">Adult Diabetes</a><br></li>
+        <li><a class="card-link" id="validate" href="G:\DSRIP_Drop_Boxes\AISD\Analytics_Deliverables">AISD</a><br></li>
+        <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Care_Transitions\Analytics Deliverables">Care Transitions</a><br></li>
+        <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Chronic_Adults\Analytics_Deliverables">Chronic Care Adults</a><br></li>
+        <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Culturally_Competent_Care\Analytics_Deliverables">Culturally Competent Care</a><br></li>
+        <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Language_Services\Analytics_Deliverables">Language Services</a><br></li>
+        <li><a href="G:\DSRIP_Drop_Boxes\OB_Navigation\Analytics_Deliverables">OB Navigation</a><br></li>
+        <li><a href="G:\DSRIP_Drop_Boxes\Obesity_Fam_Child\Analytics_Deliverables">Obesity Family and Child</a><br></li>
+        <li><a href="G:\DSRIP_Drop_Boxes\Palliative_Care\Analytics_Deliverables">Palliative Care</a><br></li>
+        </ul>
+</div>
+
+<div class="card">
+ <h4 class="card-title">Project Reference Material</h4>
+ <ul>
+        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY4 October Reporting\Templates\FINAL for PM review\Final for CJ review">DY4 Project Summaries</a><br></li>
+        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\Stakeholder Packet\Logic Models">Logic Models</a><br></li>
+        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\Narratives\Current as of September 2014">Project Narratives</a><br></li>
+
+ </ul>
+</div>
+
+<div class="card">
+ <h4 class="card-title">Collaborators</h4>
+ <ul>
+
+ </ul>
+</div>
+
+
+</div>
+{% endblock %}
+
+
+
+{% block otherthing %}
+        {% include 'listfield.html' %}
+
+{% endblock %}

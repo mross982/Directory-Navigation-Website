@@ -1,0 +1,33 @@
+
+
+<form id="listform" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="col-xs-6 control-label">Create New Link</label>
+            </div>
+            <div class="col-sm-4">
+                <select class="form-control" id="sel1" placeholder="category">
+                    <option>Resources</option>
+                    <option>Common Links</option>
+                    <option>Analytics Deliverables</option>
+                    <option>Project Reference Material</option>
+                    <option>Collaborators</option>
+
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="list[0].title" placeholder="Title" />
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="list[0].url" placeholder="file location" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+

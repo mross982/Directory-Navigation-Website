@@ -1,0 +1,150 @@
+
+{% extends "layout.html "%}
+
+{% block body %}
+
+<div class="container">
+
+<h2>Wiki Links</h2>
+
+<div class="card">
+<a href="http://www.accuweather.com/en/us/round-rock-tx/78665/weather-forecast/34425_pc" class="aw-widget-legal">
+</a><div id="awcc1467830165910" class="aw-widget-current"  data-locationkey="34425_PC" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1467830165910"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+
+<script type="text/javascript">
+crypt_multi_num_cur = "7";
+crypt_base_cur_0 = "Bitcoin (BTC)";crypt_target_cur_0 = "US Dollar (USD)";crypt_base_cur_1 = "Ethereum (ETH)";crypt_target_cur_1 = "US Dollar (USD)";crypt_base_cur_2 = "Monero (XMR)";crypt_target_cur_2 = "US Dollar (USD)";crypt_base_cur_3 = "Bitcoin Plus (XBC)";crypt_target_cur_3 = "US Dollar (USD)";crypt_base_cur_4 = "Bitcoin Unlimited (BTU)";crypt_target_cur_4 = "US Dollar (USD)";crypt_base_cur_5 = "Bytecoin (BCN)";crypt_target_cur_5 = "US Dollar (USD)";crypt_base_cur_6 = "Dash (DASH)";crypt_target_cur_6 = "US Dollar (USD)";
+</script><script type="text/javascript" src="https://www.cryptonator.com/ui/js/widget/multi_widget.js"></script>
+
+<!--
+<div id="coindesk-widget"></div>
+<script type="text/javascript" src="//widget.coindesk.com/bpiticker/coindesk-widget.min.js?b6542b"></script>
+
+<iframe id="widget-ticker-preview" src="//www.coingecko.com/en/widget_component/ticker/ethereum/usd" style="border:none; height:125px; width: 275px;" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+-->
+
+<div class="card">
+<h4 class="card-title">Resources</h4>
+<ul>
+    <li><a class="card-link" href="https://coinmarketcap.com/gainers-losers/">Coin Market Cap</a><br></li>
+    <li><a class="card-link" href="https://app.smartsheet.com/b/home?mt=69&de=hvSmdTlFOpYO96NYo5dE_0lZ6rksEuY2ildF65a3mOc">Smart Sheet</a><br></li>
+    <li><a class="card-link" href="https://redcap.seton.org/redcap/">REDCap</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Project Work\Psych Telemed 137265806.1.3\Data\JSA_PrognoCIS_instructions.docx">JSA PrognoCIS</a><br></li>
+    <li><a class="card-link" href="G:\SCC-CPED\Appointment_Text\AppointmentReminder2.0">Big Pink Bus Automated Appointment Reminder</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\Training & Development\AIM Training Materials">Aim4Excellence Program Folder</a><br></li>
+</ul>
+</div>
+
+<div class="card">
+<h4 class="card-title">Myers & Stauffer Audits</h4>
+<ul>
+    <li><a class="card-link" href="\\txaus.ds.sjhs.com\groupdir\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\MSLC">Reporting Documentation Folder</a><br></li>
+</ul>
+</div>
+
+<div class="card" id="commonlinks">
+<h4 class="card-title">Common Directories</h4>
+    <ul>
+    {% for key, item in mikelinks.items() %}
+    <li><a class="card-link" href="{{item}}">{{key}}</a><br></li>
+    {% endfor%}
+    <ul>
+</div>
+
+
+<div class="card" id="validation">
+<h4 class="card-title">Analytics Deliverables</h4>
+<ul>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\Monthly Validation Emails">Monthly Validation Emails</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Cat3_ValidationResults">Category 3 Validations</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\BH_Assessment_SUD\Analytics_Deliverables">BHA/Sud</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Chronic Care Community\Analytics_Deliverables">Chronic Care Seton Community Health Centers</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Chronic_Pediatrics\Analytics_Deliverables">Children's Comprehensive Care Clinc</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Oncology_Navigation\Analytics_Deliverables">Oncology Navigation</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Oncology_Screening\Analytics_Deliverables">Oncology Screening</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\PG_Psychiatry\Analytics_Deliverables">Psychiatry Post Grad</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\Psychiatric_Telemed\Analytics_Deliverables">Psychiatric Telemed</a><br></li>
+    <li><a class="card-link" href="G:\DSRIP_Drop_Boxes\SHL\Analytics_Deliverables">SHL ED Navigation</a><br></li>
+</ul>
+</div>
+
+
+<div class="card">
+<h4 class="card-title">Project Reference Material</h4>
+<ul>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Clinical Champions materials\DY3-6 Survey Measures_Clinical Champions_20170209.xlsx">Measure Bundle Objectives</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY6">DY6 Project Metrics and Goals</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting">DY5 Project Metric Summaries</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY4 October Reporting\Templates\FINAL for PM review\Final for CJ review">DY4 Project Summaries</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\QPI\HHSC_QPI_Metrics_Summary_July_DY3.xls">DY3 QPI Metric Summary</a><br></li>
+    <li><a class="card-link" href="\\txaus.ds.sjhs.com\groupdir\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Validation Criteria and Definitions">Validation Criteria and Definitions</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\Stakeholder Packet\Logic Models">Logic Models</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\Narratives\Current as of September 2014">Project Narratives</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Administrative\DSRIP_Project_Contacts.xlsx">Project Contacts File</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\RHP7 Central Health\RHP 7 Partnership and Collaboration Survey_20160706.xlsx">RHP 7 Partnership and Collaboration Survey</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Metric Guidance and Menus\Category 3\Cat 3 March 2014">Category 3 metric description Docs</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Cat3_Selection_Summary.xlsx">Selected Category 3 metric summary</a><br></li>
+</ul>
+</div>
+
+<div class="card">
+<h4 class="card-title">DY6 October Reporting Period</h4>
+<ul>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY6\Mike's Oct Reporting Material">Mike's October Reporting File</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY6\Cat 4 PPE reports">Category 4</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\CBA_DY6">Cost/Benefit Analysis</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY6 October Reporting">October Reporting WorkPlan</a><br></li>
+
+</ul>
+</div>
+
+<div class="card">
+<h4 class="card-title">DY5 October Reporting Period</h4>
+<ul>
+
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting\Reporting_WorkPlan_20160805.xlsx">October Reporting Timeline</a><br></li>
+    <li><a class="card-link" href="\\txaus.ds.sjhs.com\groupdir\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 April Reporting\Templates and Guidance\HHSC Webinar Slides">DY5 Reporting Information</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting\Templates">October Reporting Templates</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting\Templates\SA3_Coversheet_082516.xlsm">Stretch Activity Template</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\SA3-1st drafts">Stretch Activity 3 Naratives</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY4 October Reporting">DY4 Reporting Examples</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting\Supporting Documentation">Coversheets</a><br></li>
+     <li><a class="card-link" href="\\txaus.ds.sjhs.com\groupdir\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Project Work\Psych Telemed 137265806.1.3\Team meetings\DY5 Data Quality Review Meetings">Psych-Telemed Meeting Minutes</a><br></li>
+
+</ul>
+</div>
+
+
+<div class="card">
+<h4 class="card-title">Project Strategic Planning Material</h4>
+<ul>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Clinical Champions materials">Clinical Champions Material</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\DY6 Protocols">DY6 Protocols (i.e. Cat C draft measures)</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Meetings and Presentations\FY17 Quarterly Meetings\">Quarterly Meeting Folders Including A3</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\DSRIP Sustainability Planning">Sustainability Planning Assessments</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\Planning and Operations">Evaluation Planning Documents</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Meetings and Presentations\FY17 Quarterly Meetings">FY17 Quarterly Meetings Folder</a><br></li>
+    <li><a class="card-link" href="C:\Users\mrwilliams\Documents\DSRIP Projects\Onc Navigation\Sustainability Planning">Onc Nav Cycle Times Documents</a><br></li>
+
+</ul>
+</div>
+
+
+<div class="card">
+<h4 class="card-title">LEM Goals</h4>
+<ul>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\Lean Portfolio\Network\Daily Management System\CEE Suite 305\FY17_DSRIPA4E_20161103.xlsx">Critical Few Aim4Excellence Goal Tracker</a><br></li>
+    <li><a class="card-link" href="C:\Users\mrwilliams\Documents\DSRIP Projects\FY17_Goals_Tracker.xlsx">Personal Aim4Excellence Goal Tracker</a><br></li>
+    <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY5 October reporting\Reporting_WorkPlan_20160805.xlsx">Sustainability Planning Work Plan</a><br></li>
+    <li><a class="card-link" href="C:\Users\mrwilliams\Documents\DSRIP Projects\Goals\">Goals Folder</a><br></li>
+
+</ul>
+</div>
+
+{% endblock %}
+
+
+{% block otherthing %}
+        {% include 'listfield.html' %}
+
+{% endblock %}

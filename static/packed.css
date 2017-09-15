@@ -1,0 +1,25 @@
+
+
+.container{
+    background-color: color(blue);
+}
+
+div.image {
+
+   content:url("chart.png");
+   // width:100px; /*width of your image*/
+   // height:100px; /*height of your image*/
+   // background-image:url('chart.png');
+   // margin:0; /* If you want no margin */
+   // padding:0; /*if your want to padding */
+}​
+
+// an unvisited link
+a:link {
+    color: color(black);
+}
+
+// a visited link
+a:visited {
+    color: green(color);
+}
