@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form action="" method="post">
+        {{ measure_form.hidden_tag() }}
+        <p>
+            {{ measure_form.name.label }}<br>
+            {{ measure_form.name(size=32) }}<br>
+            {% for error in measure_form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ measure_form.unit.label }}<br>
+            {{ measure_form.unit(size=64) }}<br>
+            {% for error in measure_form.unit.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ measure_form.start_date.label }}<br>
+            {{ measure_form.start_date(size=32) }}<br>
+            {% for error in measure_form.start_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ measure_form.end_date.label }}<br>
+            {{ measure_form.end_date(size=32) }}<br>
+            {% for error in measure_form.end_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ measure_form.direction.label }}<br>
+            {{ measure_form.direction(size=32) }}<br>
+            {% for error in measure_form.direction.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <div>
+            <p>Enter every performance benchmark that applies to your measure and its associated financial value. The value can be either positive for incentives or negative for penalties. Also, if your value based purchase agreement pays for progress toward your benchmark (e.g. 1/4 of the incentive is earned for achieving each quartile of the benchmark performance rate), please enter each incremental achievment rate and value as its own benchmark.</p>
+            <p>
+                {#{{ benchmark_form.benchmarks() }}#}
+                {% for i in benchmark_form.benchmarks %}
+                    <h3><p align="left">Benchmark {{ loop.index }}</p></h3>
+                    {{ i }}
+                {% endfor %}
+            </p>
+        </div>
+        <p>{{ benchmark_form.submit() }}</p>
+    </form>
+{% endblock %}

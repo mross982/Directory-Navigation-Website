@@ -1,33 +1,28 @@
-{% extends "layout.html "%}
-{% extends "layout.html "%}
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block body %}
+{% block content %}
 
+    <body id="page-top">
+
+    <header>
+        <div>
+            <h1>Shared Drive Organizer</h1>
+        </div>
+    </header>
+
+    {% if categories %}
+    {% for category in categories %}
+        {% include '_program_head.html' %}
+
+
+    {% endfor %}
+    {% else %}
+        <p> You have not set up any categories </p>
+    {% endif %}
 
         <div class="container">
         <h1>CEE Homepage</h1>
-
-        <!-- <div class="side" -->
-
-        <!-- <div class="card">
-        <h4 class="card-title">Online Resources</h4>
-          <ul>
-          <li><a class="card-link" href="https://eod1.eclipseppm.com/login.aspx?ReturnUrl=%2f">Eclipse Project Management</a><br></li>
-          <li><a class="card-link" href="https://texasrhp7.perflogic.com/login/">Performance Logic</a><br></li>
-          <li><a class="card-link" href="https://app.smartsheet.com/b/home?mt=69&de=hvSmdTlFOpYO96NYo5dE_0lZ6rksEuY2ildF65a3mOc">Smart Sheet</a><br></li>
-
-          </ul>
-        </div> -->
-
-       <!--  <div class="card">
-        <h4 class="card-title">Internal Resources</h4>
-        <ul>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\DY4 October Reporting\Templates\FINAL for PM review\Final for CJ review">DY4 Project Summaries</a><br></li>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Program Management\Research and Evaluation\Stakeholder Packet\Logic Models">Logic Models</a><br></li>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\DSRIP\Reporting Documentation\Narratives\Current as of September 2014">Project Narratives</a><br></li>
-
-        </ul>
-        </div> -->
 
         <div class="card" id="CEE">
         <h4>General CEE Information</h4>

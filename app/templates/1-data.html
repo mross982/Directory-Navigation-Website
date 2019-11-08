@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h1>Data</h1>
+                    <p>Its important to upload all available data for your measure, given the data is accurate and adhears to the same specifications. Even data from previous measurement periods can help inform your model.</p>
+                    <p>You update the data for your model in two ways. You can use the API or provide an excel or csv document of your data in the field below. On your initial update, or during any subsequent update, you may provide any data you have. This includes all data prior to the measurement period and measurement period to date.</p>
+                </div>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {{ data_form.hidden_tag() }}
+            <p>{{ data_form.file }}</p>
+            <p>{{ data_form.submit() }}</p>
+        </form>
+    </section>
+    
+{% endblock %}

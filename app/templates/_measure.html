@@ -1,0 +1,13 @@
+   
+<table>
+    <tr>
+        <th> 
+            <p>{{ measure.name }}</p>
+        </th>
+        <th>
+        	<a href="{{ url_for('data', measure_id=measure.id) }}">Update Data</a>
+            <a href="{{ url_for('modify_measure', measure_id=measure.id) }}">Modify</a>
+            <a href="{{ url_for('warning', measure_id=measure.id) }}">Delete</a>
+        </th>
+    </tr>
+</table>

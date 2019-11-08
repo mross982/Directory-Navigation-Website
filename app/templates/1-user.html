@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+    <table>
+        <tr valign="top">
+            <td><img src="{{ current_user.avatar(72) }}"></td>
+            <th>
+                <h1>Welcome {{ current_user.name }}</h1>
+                Last seen: {{ current_user.created_dttm }}
+
+            </th>
+            <th>
+                {% include '_add_program.html' %}
+            </th>    
+        </tr>
+    </table> <br>
+
+    <h2> Current Programs</h2>
+    {% if programs %}
+    {% for program in programs %}
+        {% include '_program_head.html' %}
+        {% if program.measures %}
+        <ul>
+            {% for measure in program.measures %}
+                <li>
+                {% include '_measure.html' %}
+                </li>
+            {% endfor %}
+            <a href="{{ url_for('measure_setup', program_id=program.id) }}">Create New Measure</a>
+        </ul>
+        {% else %}
+            <p> No measures yet</p>
+            <a href="{{ url_for('measure_setup', program_id=program.id) }}">Create New Measure</a>
+        {% endif %}
+    {% endfor %}
+    {% else %}
+        <p> You are enrolled in no programs </p>
+    {% endif %}
+
+{% endblock %}

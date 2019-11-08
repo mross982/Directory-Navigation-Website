@@ -1,3 +1,23 @@
+from app import app, db
+from app.models import User, Container, Category, Link
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User, 'Container': Container, 'Category': Category, 'Link': Link}
+
+
+
+
+
+
+
+
+
+
+
+
+
 from flask import Flask, render_template, url_for
 from assets import css
 from flask_assets import Bundle, Environment
