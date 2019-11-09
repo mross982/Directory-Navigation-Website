@@ -17,40 +17,17 @@
 
 
     {% endfor %}
-    {% else %}
-        <p> You have not set up any categories </p>
-    {% endif %}
+    
 
-        <div class="container">
-        <h1>CEE Homepage</h1>
-
-        <div class="card" id="CEE">
-        <h4>General CEE Information</h4>
-        <ul>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Drop_Boxes&Associate_Folders\LisaAdamsSutton\Associate_Folder\Presidents Council Updates">CEE President's Counsil Updates</a><br></li>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\FY Goals\FY17">CEE Department Goals</a><br></li>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\Stop Light Reports\">Stop Light Reports</a><br></li>
-        <li><a class="card-link" href="http://rendezvous.seton.org/rdz/eui/">Rendezvous Meeting Room Scheduler</a><br></li>
-        <li><a class="card-link" href="http://intranet.seton.org/v2/analytics-and-health-economics/hcahps-reporting/">HCAHPS 2x2 reports</a><br></li>
-        <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Programs & Projects\Lean Portfolio\Network\Projects\CEE 5S Break Room">Breakroom 5S Project</a><br></li>
-        <li><a class="card-link" href="\\txaus.ds.sjhs.com\groupdir\Quality\Experience_and_Performance_Improvement\Programs & Projects\Lean Portfolio\Network\Projects\Texas_PMO_Project">Texas PMO Project</a><br></li>
-
-        </ul>
-        </div>
-
-        <div class="card" id="PI">
-        <h4>Performance Improvement Education</h4>
-        <ul>
-            <li><a class="card-link" href="http://intranet.seton.org/v2/performance-improvement-training-and-development/home/performance-improvement-toolbox/">PI Toolbox</a><br></li>
-            <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\Training & Development\Training Calendars\Training Calendar 2016 summary.docx">2016 PI Training Calendar</a><br></li>
-            <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\Training & Development\PI Cohort Curriculum and Logistics">PI Cohort Curriculum and Logistics</a><br></li>
-            <li><a class="card-link" href="G:\Quality\Experience_and_Performance_Improvement\Administration\Training & Development">PI Training</a><br></li>
-        </ul>
-
-{% endblock %}
+    <div class="container">
+        {% if categories %}
+        {% for category in categories %}
+            {% include '_category.html' %}
+        {% endfor %}
+        {% else %}
+            <p> You have not set up any categories </p>
+        {% endif %}
 
 
-
-{% block otherthing %}
-
+        
 {% endblock %}

@@ -5,9 +5,9 @@ import config
 
 
 
-class ContainerSetupForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+# class ContainerSetupForm(FlaskForm):
+#     name = StringField('Name', validators=[DataRequired()])
+#     submit = SubmitField('Submit')
 
 class CategorySetupForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])

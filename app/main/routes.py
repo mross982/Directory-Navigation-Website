@@ -3,8 +3,8 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 # from werkzeug import secure_filename
 from app import app, db
-from app.forms import LoginForm, ContainerSetupForm, CategorySetupForm, LinkSetupForm
-from app.models import User, Container, Category, Link
+from app.forms import LoginForm, CategorySetupForm, LinkSetupForm
+from app.models import User, Category, Link
 import sys
 import csv
 from datetime import datetime as dt
@@ -42,13 +42,13 @@ def user(name):
     category_form = CategorySetupForm()
     link_form = LinkSetupForm()
     if request.method == 'POST':
-        if container_form.submit.data == True: #create new container
-            container = Container(name=container_form.name.data)
-            container.user_id.append(current_user.id)
-            db.session.add(container)
+        if category_form.submit.data == True: #create new container
+            category = Category(name=category_form.name.data)
+            category.user_id.append(current_user.id)
+            db.session.add(category)
             db.session.commit()
-            container_form.name.data = ''
-            container_form.submit.data = False
+            category_form.name.data = ''
+            category_form.submit.data = False
             
             return render_template('user.html', name=current_user.name, containers=user.containers, container_form=container_form, category_form=category_form, link_form=link_form)
     	

@@ -56,28 +56,13 @@ class User(db.Model):
     #         self.set_password(data['password'])
 
 
-
-class Container(db.Model):
-    '''
-    '''
-    __tablename__ = 'container'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, dbForeignKey('user.id'))
-    name = db.Column(db.String(100))
-    categories = db.relationship('Category', lazy='select')
-    created_dttm = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Container: {}>'.format(self.name)
-
-
 class Category(db.Model):
     '''
     
     '''
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key=True)
-    container_id = db.Column(db.Integer, db.ForeignKey('container.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     name = db.Column(db.String(50))
     links = db.relationship('Link', lazy='select')
     created_dttm = db.Column(db.DateTime, default=datetime.utcnow)

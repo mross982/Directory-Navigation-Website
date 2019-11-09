@@ -2,15 +2,11 @@
 
 <html>
     <head>
-        {% if title %}
-        <title>{{ title }} - Carease</title>
-        {% else %}
-        <title>Statistical Modeling For Your Budget</title>
-        {% endif %}
+        <title>Shared Drive Navigation Tool</title>
     </head>
     <body>
         <div>
-            <a href="{{ url_for('index') }}">Bayesian Budgeting</a>
+            <a href="{{ url_for('index') }}">Shared Drive Navigation Tool</a>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
             {% else %} 
