@@ -1,32 +1,46 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager
-from flask_mail import Mail
+from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 from config import Config
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask import request
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 # line below (and from app inport routes) is all you need for a basic app
 app = Flask(__name__)
 # creates the application object as an instance of class Flask imported from the flask package.
+CORS(app)
+jwt = JWTManager(app)
 
 app.config.from_object(Config)
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # for the file upload function, set max size file
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-login = LoginManager(app) # ensures content cannot be viewed if user is not logged in.
-login.login_view = 'login'
+# login = LoginManager(app) # ensures content cannot be viewed if user is not logged in.
+# login.login_view = 'login'
 # The 'login' value above is the function (or endpoint) name for the login view. In other words, 
 # the name you would use in a url_for() call to get the URL.
-mail = Mail(app)
+
 bootstrap = Bootstrap(app)
 moment = Moment(app) # unlike other extensions, moment works with moment.js
 # Moment.js makes a moment class available to the browser.
 
+# the @bp.app_errorhandler replaces @app.errorhandler because its independent of the app (i.e. portability) 
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
+
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix='/auth')
+
 
 # app is the package; routes, models, etc. are the modules
-from app import routes, models, errors, forms
+# from app.main import routes, models, calculations
+
+
 '''
 One aspect that may seem confusing at first is that there are two entities named app. 
 The app package is defined by the app directory and the __init__.py script, and is 
@@ -54,20 +68,20 @@ if not app.debug: # below is for logging errors
     app.logger.info('Microblog startup')
 
     # Below is for email debugging
-    if app.config['MAIL_SERVER']:
-        auth = None
-        if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
-            auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-        secure = None
-        if app.config['MAIL_USE_TLS']:
-            secure = ()
-        mail_handler = SMTPHandler(
-            mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['ADMINS'], subject='Microblog Failure',
-            credentials=auth, secure=secure)
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
+    # if app.config['MAIL_SERVER']:
+    #     auth = None
+    #     if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
+    #         auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+    #     secure = None
+    #     if app.config['MAIL_USE_TLS']:
+    #         secure = ()
+    #     mail_handler = SMTPHandler(
+    #         mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
+    #         fromaddr='no-reply@' + app.config['MAIL_SERVER'],
+    #         toaddrs=app.config['ADMINS'], subject='Microblog Failure',
+    #         credentials=auth, secure=secure)
+    #     mail_handler.setLevel(logging.ERROR)
+    #     app.logger.addHandler(mail_handler)
 
 '''
 the code above creates a SMTPHandler instance, sets its level so that it only reports 

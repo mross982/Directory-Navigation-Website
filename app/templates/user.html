@@ -1,33 +1,33 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-
-    <body id="page-top">
-
-    <header>
-        <div>
-            <h1>Shared Drive Organizer</h1>
-        </div>
-    </header>
-
+    <table>
+        <tr valign="top">
+            <td><img src="{{ user.avatar(72) }}"></td>
+            <td>
+                <h1>Welcome {{ user.username }}</h1>
+                <a href="{{ url_for('category_setup') }}">Create New Category</a>
+            </td>
+        </tr>
+    </table>
     {% if categories %}
     {% for category in categories %}
-        {% include '_program_head.html' %}
-
-
-    {% endfor %}
-    
-
-    <div class="container">
-        {% if categories %}
-        {% for category in categories %}
-            {% include '_category.html' %}
+        {% include '_category.html' %}
+        {% if category.links %}
+        {% for link in category.links %}
+            {% include '_link.html' %}
         {% endfor %}
         {% else %}
-            <p> You have not set up any categories </p>
+            <p> You have not set up any links </p>
         {% endif %}
+    {% endfor %}
+    {% else %}
+        <p> You have not set up any categories </p>
+    {% endif %}
 
-
-        
 {% endblock %}
+
+<!-- 
+<button action="{{ url_for('delete_measure', measure=measure) }}">Delete</button>
+<a href="{{ url_for('delete_measure', measure_id= measure.id) }}">Delete</a>
+ -->

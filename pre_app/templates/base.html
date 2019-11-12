@@ -2,15 +2,15 @@
 
 <html>
     <head>
-        <title>Directory Navigator</title>
+        <title>Shared Drive Navigation Tool</title>
     </head>
     <body>
         <div>
-            <a href="{{ url_for('index') }}">Directory Navigator</a>
+            <a href="{{ url_for('index') }}">Shared Drive Navigation Tool</a>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
             {% else %} 
-            <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+            <a href="{{ url_for('user', name=current_user.name) }}">Profile</a>
             <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
         </div>
@@ -27,7 +27,3 @@
         {% block content %}{% endblock %}
     </body>
 </html>
-
-<!-- 
-<a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-Since the user profile view function takes a dynamic argument, the url_for() function receives a value for it as a keyword argument. Since this is a link that points to the logged in's user profile, I can use Flask-Login's current_user to generate the correct URL.

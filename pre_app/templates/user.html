@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+    <body id="page-top">
+
+    <header>
+        <div>
+            <h1>Shared Drive Organizer</h1>
+        </div>
+    </header>
+
+    {% if categories %}
+    {% for category in categories %}
+        {% include '_program_head.html' %}
+
+
+    {% endfor %}
+    
+
+    <div class="container">
+        {% if categories %}
+        {% for category in categories %}
+            {% include '_category.html' %}
+        {% endfor %}
+        {% else %}
+            <p> You have not set up any categories </p>
+        {% endif %}
+
+
+        
+{% endblock %}

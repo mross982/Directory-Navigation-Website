@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Choose a Category Title</h1>
+    <form action="" method="post">
+        {{ category_form.hidden_tag() }}
+        <p>
+            {{ category_form.name.label }}<br>
+            {{ category_form.name(size=32) }}<br>
+            {% for error in category_form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ category_form.submit() }}
+        </p>
+    </form>
+{% endblock %}
