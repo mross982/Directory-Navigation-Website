@@ -1,33 +1,26 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-
     <body id="page-top">
 
     <header>
         <div>
-            <h1>Shared Drive Organizer</h1>
+            <h1>Shared Drive Navigation Tool</h1>
         </div>
     </header>
 
-    {% if categories %}
-    {% for category in categories %}
-        {% include '_program_head.html' %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h1>Shared Drive</h1>
 
+                    <p>The shared drive, often referred to as the "G drive" has quite a complex structure due to the way in which it is organized by numerous individuals. This tool seeks to allow users to quckly setup a web page which can be used to quickly navigate to their most important folders.</p>
 
-    {% endfor %}
-    
-
-    <div class="container">
-        {% if categories %}
-        {% for category in categories %}
-            {% include '_category.html' %}
-        {% endfor %}
-        {% else %}
-            <p> You have not set up any categories </p>
-        {% endif %}
-
-
-        
+                    <p>Before you setup your webpage, I recommend that you first change your default browser to Explorer. This will allow you to quickly open your webpage and navigate to your favorite folders. Google's Chrome will not work with this program because the browser does not allow users to open folders on their PC via the Chrome browser. Microsoft Edge is pointless, so I will not even address it.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>    
 {% endblock %}
