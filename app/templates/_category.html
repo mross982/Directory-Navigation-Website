@@ -5,13 +5,10 @@
             <h2>{{ category.name }}</h2>
         </th>
         <th>
+    	<font size="2">
             <a href="{{ url_for('modify_category', categoryname=category.name) }}">Modify</a>
             <a href="{{ url_for('warning', categoryname=category.name) }}">Delete</a>
+        </font>
         </th>
-    </tr>
-    <tr>
-    	<th>
-    		<a href="{{ url_for('link_setup', category=category.name) }}">Create Link</a>
-    	</th>
     </tr>
 </table>

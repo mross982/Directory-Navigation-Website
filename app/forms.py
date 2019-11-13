@@ -48,7 +48,7 @@ class CategorySetupForm(FlaskForm):
 
 
 class WarningForm(FlaskForm ):
-    delete = SubmitField('Delete Measure')
+    delete = SubmitField('Delete Catgory')
     save = SubmitField('Return')
 
 

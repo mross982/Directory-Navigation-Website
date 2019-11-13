@@ -86,34 +86,26 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     categories = Category.query.filter_by(user_id=user.id).all()
-    return render_template('user.html', user=user, categories=categories)
-
-
-@app.route('/category_setup', methods=['GET', 'POST'])
-@login_required
-def category_setup():
     category_form = CategorySetupForm()
-    if category_form.validate_on_submit():
+    if request.method == 'POST':
         category = Category(name=category_form.name.data, user_id=current_user.id)
         db.session.add(category)
         db.session.commit()
-        
+        print('category form validated')
         return redirect(url_for('user', username=current_user.username))
+    
+    return render_template('user.html', user=user, category_form=category_form, categories=categories)
 
-    return render_template('category_setup.html', category_form=category_form)
 
-
-@app.route('/link_setup/<category>', methods=['GET', 'POST'])
+@app.route('/link_setup/<category_name>', methods=['GET', 'POST'])
 @login_required
-def link_setup(category):
+def link_setup(category_name):
     link_form = LinkSetupForm()
     if link_form.validate_on_submit():
-        print(category)
-        print(type(category))
-        link = Link(name=link_form.name.data, category=category, url= link_form.url.data)
+        category = Category.query.filter_by(name=category_name).first_or_404()
+        link = Link(name=link_form.name.data, category_id=category.id, url= link_form.url.data)
         db.session.add(link)
         db.session.commit()
-        
         return redirect(url_for('user', username=current_user.username))
 
     return render_template('link_setup.html', link_form=link_form)
@@ -142,8 +134,8 @@ def warning(categoryname):
             user = category.user
             db.session.delete(category)
             db.session.commit()
-            flash("Measure Deleted")
-            return redirect(url_for('user', username=user.username ))
+            flash("Category Deleted")
+            return redirect(url_for('user', username=user.username))
         else:
             category = Category.query.filter_by(name=categoryename).first_or_404()
             user = category.user
