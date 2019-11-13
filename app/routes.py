@@ -91,7 +91,6 @@ def user(username):
         category = Category(name=category_form.name.data, user_id=current_user.id)
         db.session.add(category)
         db.session.commit()
-        print('category form validated')
         return redirect(url_for('user', username=current_user.username))
     
     return render_template('user.html', user=user, category_form=category_form, categories=categories)
