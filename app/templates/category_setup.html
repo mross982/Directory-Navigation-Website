@@ -5,7 +5,7 @@
         <p>
             Create New Category
             {{ category_form.name(size=32) }}
-            {{ category_form.cat_submit }}<br>
+            {{ category_form.submit }}<br>
             {% for error in category_form.name.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

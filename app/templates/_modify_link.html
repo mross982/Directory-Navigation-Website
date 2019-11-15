@@ -1,0 +1,16 @@
+<form action="" method="post">
+	{{ link_form.hidden_tag() }}
+    <br>
+    <tr>
+        <td>
+            {% for l in link_form.links %}
+                {{ l.form.name }}
+                {{ l.form.url }}<br>
+            {% endfor %}  
+        <td>
+        {% for error in link_form.links.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </tr>
+    <p>{{ link_form.submit() }}</p>
+</form>

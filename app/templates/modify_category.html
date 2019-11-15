@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> Modify Your Category or Links </h1>
+    {% include 'category_setup.html' %}
+    {% if category.links %}
+        {% include '_modify_link.html' %}
+    {% endif %}
+{% endblock %}

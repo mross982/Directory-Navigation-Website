@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, CategorySetupForm, LinkSetupForm, WarningForm 
+from app.forms import LoginForm, RegistrationForm, CategorySetupForm, LinkSetupForm, WarningForm, LinkModificationForm 
 from app.models import User, Category, Link
 from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -113,14 +113,30 @@ def link_setup(category_name):
 @app.route('/modify_category/<categoryname>', methods=['GET', 'POST'])
 @login_required
 def modify_category(categoryname):
+    # add the ability to modify every link in the currently named category setup html page.
     category = Category.query.filter_by(name=categoryname).first_or_404()
     category_form = CategorySetupForm(obj=category)
+    link_form = LinkModificationForm()
     if request.method == 'POST':
-        category.name=category_form.name.data
-        db.session.commit()
-        return redirect(url_for('user', username=current_user.username))
-    
-    return render_template('category_setup.html', category_form=category_form)
+        if link_form.submit():
+            category.name=category_form.name.data
+            x = 0
+            for entry in link_form.links.entries:
+                print(entry.data)
+                if (entry.data['name'] == None) or (entry.data['url'] == None):
+                    db.session.delete(category.links[x])
+                    print('deleted?')
+                else:
+                    category.links[x].name = entry.data['name']
+                    category.links[x].url = entry.data['url']
+                    # db.session.commit()
+                    print('committed')
+                x+=1
+                
+            db.session.commit()
+            return redirect(url_for('user', username=current_user.username))
+    link_form = LinkModificationForm.populate_form(category.id)
+    return render_template('modify_category.html', category=category, category_form=category_form, link_form=link_form)
 
 
 @app.route('/warning/<categoryname>', methods=['GET' ,'POST'])
@@ -136,7 +152,7 @@ def warning(categoryname):
             flash("Category Deleted")
             return redirect(url_for('user', username=user.username))
         else:
-            category = Category.query.filter_by(name=categoryename).first_or_404()
+            category = Category.query.filter_by(name=categoryname).first_or_404()
             user = category.user
             return redirect(url_for('user', username=user.username))
     return render_template('warning.html', form=form)

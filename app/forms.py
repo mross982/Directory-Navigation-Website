@@ -9,6 +9,15 @@ from app.models import User, Category, Link
 from werkzeug.datastructures import MultiDict
 import config
 
+def object_troubleshoot(obj):
+
+    for attr in dir(obj):
+        try:
+            print("obj.%s = %r" % (attr, getattr(obj, attr)))
+        except:
+            pass
+
+
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -40,6 +49,29 @@ class LinkSetupForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     url = StringField('Url', validators=[DataRequired()])
     submit = SubmitField('Complete')
+
+
+class LinkModificationSubForm(FlaskForm):
+    name = StringField('Name', validators=[Optional()], filters=[lambda x: x or None])
+    url = StringField('Url', validators=[Optional()], filters=[lambda x: x or None])
+
+
+class LinkModificationForm(FlaskForm):
+    links = FieldList(FormField(LinkModificationSubForm))
+    submit = SubmitField('Complete')
+
+    def populate_form(category_id):
+        links = Link.query.filter_by(category_id=category_id).all()
+        link_form = LinkModificationForm()
+        while len(link_form.links) > 0:
+            link_form.links.pop_entry()
+        for link in links:
+            l_data = dict()
+            l_data['name'] = link.name
+            l_data['url'] = link.url
+            link_form.links.append_entry(l_data)
+            
+        return link_form
 
 
 class CategorySetupForm(FlaskForm):
