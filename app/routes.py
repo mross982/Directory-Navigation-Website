@@ -8,6 +8,7 @@ from app.models import User, Category, Link
 from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
 import sys
+from copy import deepcopy
 
 '''
 These routes are know as the view function
@@ -118,23 +119,25 @@ def modify_category(categoryname):
     category_form = CategorySetupForm(obj=category)
     link_form = LinkModificationForm()
     if request.method == 'POST':
-        if link_form.submit():
-            category.name=category_form.name.data
-            x = 0
-            for entry in link_form.links.entries:
-                print(entry.data)
-                if (entry.data['name'] == None) or (entry.data['url'] == None):
-                    db.session.delete(category.links[x])
-                    print('deleted?')
-                else:
-                    category.links[x].name = entry.data['name']
-                    category.links[x].url = entry.data['url']
-                    # db.session.commit()
-                    print('committed')
+        category.name=category_form.name.data
+        db.session.commit()
+        link_ids = []
+        for i in category.links: # create list of link ID numbers
+            link_ids.append(i.id)
+        x = 0
+        for entry in link_form.links.entries: # iterate of link forms
+            if (entry.data['name'] == None) or (entry.data['url'] == None): # for deleted links
+                link = Link.query.filter_by(id=link_ids[x]).first_or_404()
+                db.session.delete(link)
+                db.session.commit()
                 x+=1
-                
-            db.session.commit()
-            return redirect(url_for('user', username=current_user.username))
+            else: # for modified links
+                category.links[x].name = entry.data['name']
+                category.links[x].url = entry.data['url']
+                db.session.commit()
+                x+=1
+            
+        return redirect(url_for('user', username=current_user.username))
     link_form = LinkModificationForm.populate_form(category.id)
     return render_template('modify_category.html', category=category, category_form=category_form, link_form=link_form)
 
