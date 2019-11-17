@@ -72,21 +72,18 @@ body {
 
 
 <div class="navbar">
-  <a href="{{url_for('index')}}">Directory Navigator</a>
-  {% if current_user.is_anonymous %}
-  <a href="{{url_for('login')}}">Login</a>
-  {% else %}
-  <a href="{{url_for('user', username=current_user.username) }}">Profile</a>
-  <a href="{{url_for('logout')}}">Logout</a>
-  {% endif %}
   <div class="dropdown">
-    <button class="dropbtn">Dropdown 
+    <button class="dropbtn">Directory Navigator 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="{{url_for('index')}}">Home</a>
+      {% if current_user.is_anonymous %}
+      <a href="{{url_for('login')}}">Login</a>
+      {% else %}
+      <a href="{{url_for('user', username=current_user.username) }}">Profile</a>
+      <a href="{{url_for('logout')}}">Logout</a>
+      {% endif %}
     </div>
   </div> 
 </div>

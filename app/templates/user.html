@@ -1,29 +1,42 @@
+
 {% extends "base.html" %}
 
 {% block content %}
-    <table>
-        <tr valign="top">
-            <td><img src="{{ user.avatar(72) }}"></td>
-            <td>
-                <h1>Welcome {{ user.username }}</h1>
-                {% include 'category_setup.html' %}
-            </td>
-        </tr>
-    </table>
-    {% if categories %}
-    {% for category in categories %}
-        {% include '_category.html' %}
-        {% if category.links %}
-        {% for link in category.links %} 
-            {% include '_link.html' %}
-        {% endfor %}
-        {% else %}
-            <p> You have not set up any links </p>
-        {% endif %}
-        <font size="2"><a href="{{ url_for('link_setup', category_name=category.name) }}">Create New Link</a></font>
+
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<table>
+    <tr valign="top">
+        <td><img src="{{ user.avatar(72) }}"></td>
+        <td>
+            <h1>Welcome {{ user.username }}</h1>
+            {% include 'category_setup.html' %}
+        </td>
+    </tr>
+</table>
+
+{% if categories %}
+{% for category in categories %}
+    <p id="L01">
+    {% include '_category.html' %}
+    {% if category.links %}
+    {% for link in category.links %} 
+        {% include '_link.html' %}
     {% endfor %}
     {% else %}
-        <p> You have not set up any categories </p>
+        <p> You have not set up any links </p>
     {% endif %}
+    <font size="2"><a href="{{ url_for('link_setup', category_name=category.name) }}">Create New Link</a></font>
+    </p>
+{% endfor %}
+{% else %}
+    <p> You have not set up any categories </p>
+{% endif %}
 
 {% endblock %}
+</body>
+</html>
