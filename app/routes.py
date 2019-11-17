@@ -113,7 +113,7 @@ def link_setup(category_name):
 
 @app.route('/modify_category/<categoryname>', methods=['GET', 'POST'])
 @login_required
-def modify_category(categoryname):
+def modify_category(categoryname): # misnomer; allows you to modify links too
     # add the ability to modify every link in the currently named category setup html page.
     category = Category.query.filter_by(name=categoryname).first_or_404()
     category_form = CategorySetupForm(obj=category)
@@ -138,6 +138,7 @@ def modify_category(categoryname):
                 x+=1
             
         return redirect(url_for('user', username=current_user.username))
+        
     link_form = LinkModificationForm.populate_form(category.id)
     return render_template('modify_category.html', category=category, category_form=category_form, link_form=link_form)
 
