@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<table>
+    <tr valign="top">
+        <td><img src="{{ user.avatar(72) }}"></td>
+        <td>
+            <h1>Welcome {{ user.username }}</h1>
+        </td>
+    </tr>
+</table>
+
+<p>
+    Coming Soon
+</p>
+{% endblock %}
+</body>
+</html>

@@ -82,9 +82,9 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/user/<username>', methods=['GET', 'POST'])
+@app.route('/quick_links/<username>', methods=['GET', 'POST'])
 @login_required
-def user(username):
+def quick_links(username):
     user = User.query.filter_by(username=username).first_or_404()
     categories = Category.query.filter_by(user_id=user.id).all()
     category_form = CategorySetupForm()
@@ -92,9 +92,9 @@ def user(username):
         category = Category(name=category_form.name.data, user_id=current_user.id)
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('quick_links', username=current_user.username))
     
-    return render_template('user.html', user=user, category_form=category_form, categories=categories)
+    return render_template('quick_links.html', user=user, category_form=category_form, categories=categories)
 
 
 @app.route('/link_setup/<category_name>', methods=['GET', 'POST'])
@@ -106,7 +106,7 @@ def link_setup(category_name):
         link = Link(name=link_form.name.data, category_id=category.id, url= link_form.url.data)
         db.session.add(link)
         db.session.commit()
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('quick_links', username=current_user.username))
 
     return render_template('link_setup.html', link_form=link_form)
 
@@ -137,7 +137,7 @@ def modify_category(categoryname): # misnomer; allows you to modify links too
                 db.session.commit()
                 x+=1
             
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('quick_links', username=current_user.username))
         
     link_form = LinkModificationForm.populate_form(category.id)
     return render_template('modify_category.html', category=category, category_form=category_form, link_form=link_form)
@@ -154,14 +154,19 @@ def warning(categoryname):
             db.session.delete(category)
             db.session.commit()
             flash("Category Deleted")
-            return redirect(url_for('user', username=user.username))
+            return redirect(url_for('quick_links', username=user.username))
         else:
             category = Category.query.filter_by(name=categoryname).first_or_404()
             user = category.user
-            return redirect(url_for('user', username=user.username))
+            return redirect(url_for('quick_links', username=user.username))
     return render_template('warning.html', form=form)
 
 
+@app.route('/drive_search/<username>', methods=['GET', 'POST'])
+@login_required
+def drive_search(username):
+
+    return render_template('drive_search.html', user=current_user)
 
 #*************** Extra Code ************************************************
 
